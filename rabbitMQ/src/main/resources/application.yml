@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: rabbitMQ
+  cloud:
+    stream:
+      bindings:
+        outputChannel:
+          destination: messages
+          content-type: application/json
+          binder: rabbit
+        inputChannel:
+          destination: messages
+          group: grupo-consumidor
+          binder: rabbit
