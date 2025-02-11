@@ -15,6 +15,7 @@ public class MessageController {
 
     @PostMapping("/messages/{message}")
     public String sendMessage(@PathVariable String message) {
+        System.out.println("Entra en el metodo sedMessage");
         streamBridge.send("outputChannel", message);
         return "Pedido enviado";
     }

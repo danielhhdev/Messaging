@@ -2,13 +2,16 @@ spring:
   application:
     name: rabbitMQ
   cloud:
+    function:
+      definition: processMessage
     stream:
       bindings:
         outputChannel:
           destination: messages
+          group: ${spring.application.name}
           content-type: application/json
           binder: rabbit
-        inputChannel:
+        processMessage-in-0:
           destination: messages
-          group: grupo-consumidor
+          group: ${spring.application.name}
           binder: rabbit
